@@ -6,6 +6,7 @@ import prisma from '../../../lib/prismadb'
 
 export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
+    secret: "myauthsecretishere",
     providers: [
       CredentialsProvider({
         name: 'credentials',
@@ -48,7 +49,6 @@ export const authOptions: AuthOptions = {
     session: {
       strategy: "jwt",
     },
-    secret: process.env.NEXTAUTH_SECRET,
   }
 
   const handler = NextAuth(authOptions)
